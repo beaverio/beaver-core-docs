@@ -40,7 +40,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.9",
     "cross-var-no-babel": "^1.2.0",
-    "imagesloaded": "^4.1.4",
+    "imagesloaded": "^5.0.0",
     "jquery": "^3.6.0",
     "lunr": "^2.3.9",
     "markdown-it": "^12.0.6",
