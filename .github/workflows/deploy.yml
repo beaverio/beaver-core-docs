@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      node-version: 18
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.node-version }}
+        cache: 'npm'
+
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run build
+    - run: cp -p --remove-destination node_modules/imagesloaded/imagesloaded.pkgd.min.js _site/slate/js/lib/imagesloaded.min.js
+    - run: cp -p --remove-destination node_modules/jquery/dist/jquery.min.js _site/slate/js/lib/
+    - run: cp -p --remove-destination node_modules/lunr/lunr.min.js _site/slate/js/lib/
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
+
