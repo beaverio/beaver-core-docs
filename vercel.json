@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "installCommand": "npm ci",
+  "devCommand": "npm run serve",
+  "framework": null
+}
